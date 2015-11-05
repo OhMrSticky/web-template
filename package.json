@@ -1,0 +1,17 @@
+{
+  "name": "web-template",
+  "title": "Emily's Web Template",
+  "description": "A frist attempt at grunt and creating a nice web template",
+  "url": "http://emilydawnsmith.com",
+  "author": "Emily Smith",
+  "copyright": "2015",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/adabyronlovelace/web-template"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "^0.5.1"
+  }
+}
