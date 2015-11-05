@@ -1,0 +1,1 @@
+Make sure all files are minified and necessary. The grunt process just concatinates these files into one js, grabbing everything in the 'vendor' folder, so be sure you want all these files and they are already minifed. 
