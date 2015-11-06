@@ -45,6 +45,16 @@ module.exports = function(grunt) {
 					dest: 'dist/resources/images/'
 				}]
 			}
+		},
+		
+		watch: {
+			scripts: {
+				files: ['src/js/*.js', 'src/scss/*.scss'],
+				tasks: ['concat', 'uglify', 'sass'],
+				options: {
+					spawn: false,
+				},
+			} 
 		}
 
     });
@@ -54,8 +64,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
     // GRUNT TASKS
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin', 'watch']);
 
 };
