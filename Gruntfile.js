@@ -1,18 +1,29 @@
 module.exports = function(grunt) {
 
-    // 1. All configuration goes here 
+    // CONFIGURATION 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
-        concat: {
-            js: {
-				src: [
-					'dist/js/vendor/*.js', // All JS in the vendor folder
-					'src/js/*.js'  // All custom JS
-				],
+		
+		concat: {
+			options: {
+				separator: ";/******Next Script*****/"
+			},
+            vendor: {
+				src: 'dist/js/vendor/*.js', // All JS in the vendor folder
+				dest: 'dist/js/vendor.min.js',
+			},
+			custom: {
+				src: 'src/js/*.js',  // All custom JS
 				dest: 'dist/js/main.js',
 			}
         },
+		
+		uglify: {
+			build: {
+				src: 'dist/js/main.js',
+				dest: 'dist/js/main.min.js'
+			}
+		},
 		
 		sass: {
 			dist: {
@@ -24,14 +35,17 @@ module.exports = function(grunt) {
 				}
 			} 
 		}
+		
+		
 
     });
 
-    // 3. Where we tell Grunt we plan to use this plug-in.
+    // NPM PACKAGES
     grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 
-    // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat', 'sass']);
+    // GRUNT TASKS
+    grunt.registerTask('default', ['concat', 'uglify', 'sass']);
 
 };
