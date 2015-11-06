@@ -34,9 +34,18 @@ module.exports = function(grunt) {
 					'dist/css/main.css': 'src/scss/main.scss'
 				}
 			} 
+		},
+		
+		imagemin: {
+			dynamic: {
+				files: [{
+					expand: true,
+					cwd: 'src/images/',
+					src: ['**/*.{png,jpg,gif}'],
+					dest: 'dist/resources/images/'
+				}]
+			}
 		}
-		
-		
 
     });
 
@@ -44,8 +53,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // GRUNT TASKS
-    grunt.registerTask('default', ['concat', 'uglify', 'sass']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin']);
 
 };
