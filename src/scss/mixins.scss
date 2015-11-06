@@ -5,3 +5,7 @@
     -o-#{$property}:$value;
     #{$property}:$value;
 }
+
+@mixin border-radius($radius) {
+	@include all-browsers("border-radius", $radius);
+}
